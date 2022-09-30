@@ -1,0 +1,44 @@
+
+   
+    <aside id="com">
+        
+    </aside>
+
+<div class="card-deck" >
+    <?php foreach($articles as  $article) : ?>
+    
+        <div class="card" id="card">
+            <img class="card-img-top"  id="card-img-top" src="images/<?= $article["image"]?>" >
+            <div class="card-body" id ="card-body">
+                <a   href="article.php?id_art=<?= $article["id_article"] ?>"> 
+                    <h5 class="card-title"><?= $article["titre"] ?></h5>
+                </a>
+                <p class="card-text" id="card-text">
+                    <?= substr($article["contenu"], 0, 100) ?>
+                </p>
+            </div>
+            <div class="card-footer" id="card-footer">
+                <small class="text-muted">
+                    <div class="justifi">
+                        <p class="auteur" ><?= $article["nom"] ?> 
+                            <?= $article["prenom"] ?>
+                        </p>  
+                        <a   href="cat.php?id_cat=<?= $article["id_cat"] ?>"><p class="cat"> #<?= $article["nomCat"] ?></p></a>
+                    </div>
+                    
+                   <div class="justifi">
+                        
+                        <p>
+                            <a   href="article.php?id_art=<?= $article["id_article"] ?>" class="btn btn-primary">lire la suite</a>
+                        </p>
+                        <p ><?= $article["date"] ?></p>
+                   </div>
+                </small>
+               
+            </div>
+        </div>
+    <?php endforeach; ?>
+</div>
+
+
+

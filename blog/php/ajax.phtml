@@ -1,0 +1,7 @@
+<?php foreach($cam5 as $cam) : ?>
+    <div class="listecom">
+        <p><?= $cam["pseudo"] ?></p>
+        <p><?= substr($cam["contenu"],0,20) ?></p>
+        <p><?= $cam["date"] ?></p>
+    </div>
+<?php endforeach; ?>

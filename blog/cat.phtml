@@ -1,0 +1,34 @@
+<div class="card-deck" >
+    <?php foreach($categories as  $categorie) : ?>
+        <div class="card" id="card">
+            <img class="card-img-top"  id="card-img-top" src="images/<?= $categorie["image"]?>" >
+            <div class="card-body" id ="card-body">
+                <a   href="article.php?id_art=<?= $categorie["id_article"] ?>"> 
+                    <h5 class="card-title"><?= $categorie["titre"] ?></h5>
+                </a>
+                <p class="card-text" id="card-text">
+                    <?= substr($categorie["contenu"], 0, 100) ?>
+                </p>
+            </div>
+            <div class="card-footer" id="card-footer">
+                <small class="text-muted">
+                    <div class="justifi">
+                        <p class="auteur" ><?= $categorie["nom"] ?> 
+                            <?= $categorie["prenom"] ?>
+                        </p>  
+                       <a href="cat.php?$id_cat=<?= $categorie["id_cat"] ?>"><p class="cat"> #<?= $categorie["nomCat"] ?></p></a>
+                    </div>
+                    
+                   <div class="justifi">
+                        
+                        <p>
+                            <a   href="article.php?id_art=<?= $categorie["id_article"] ?>" class="btn btn-primary">lire la suite</a>
+                        </p>
+                        <p ><?= $categorie["date"] ?></p>
+                   </div>
+                </small>
+                
+            </div>
+        </div>
+    <?php endforeach; ?>
+</div>

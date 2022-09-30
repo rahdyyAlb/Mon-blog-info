@@ -1,0 +1,17 @@
+<?php if(isset($_SESSION["admin"])) : ?>
+    <form action="ajout_auteur.php" method="post">
+      <div class="row">
+        <div class="col">
+            <label for="nom" class="blanc">Nom</label>
+            <input type="text" class="form-control" name="nom" placeholder="nom">
+        </div>
+        <div class="col">
+            <label for="prenom" class="blanc">Prenom</label>
+            <input type="text" class="form-control" name="prenom" placeholder="prénom">
+        </div>
+        <input class="valider" type="submit" value="valider"/>
+      </div>
+    </form>
+<?php else: ?>
+<?php header('location:admin.php'); ?>
+<?php endif; ?>

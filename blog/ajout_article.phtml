@@ -1,0 +1,36 @@
+<?php if(isset($_SESSION["admin"])) : ?>
+<form enctype="multipart/form-data" action="ajout_article.php" method="post">
+    <h4>Ajouter un article</h4>
+    <fieldset> 
+    	<div class="pseudo">
+	        <label for="story">Titre</label>
+	        <input type="text" name="titre"/>
+		</div>
+		<div>
+	    	<textarea id="story" name="contenu" rows="15" cols="100"></textarea>
+	    </div>
+	    <div class="custom-file">
+	        <input type="hidden" name="MAX_FILE_SIZE" value="2500000" title="Permitted bytes per file." />
+            <input type="file"  name ="image" class="custom-file-input" id="validatedCustomFile" >
+            <label class="custom-file-label" for="validatedCustomFile">Ajouter un image</label>
+        </div>
+	    <label for="id_auteur">Catégorie</label>
+    <select name ="id_cat" class="form-control" id="exampleFormControlSelect1">
+        <?php foreach($categories as $categorie) : ?>
+        <option value="<?= $categorie["id_cat"] ?>"><?= $categorie["nomCat"] ?> </option>
+        <?php endforeach; ?> 
+    </select>
+     <label for="id_auteur"> Auteur</label>
+    <select name ="id_auteur" class="form-control" id="exampleFormControlSelect1">
+      <?php foreach($auteurs as $auteur) : ?>
+      <option value="<?= $auteur["id_auteur"] ?>"><?= $auteur["nom"] ?> <?= $auteur["prenom"] ?></option>
+      <?php endforeach; ?> 
+    </select>
+    
+    	<input class="valider" type="submit" value="valider"/>
+	</fieldset>	
+
+</form>
+<?php else: ?>
+<?php header('location:admin.php'); ?>
+<?php endif; ?>

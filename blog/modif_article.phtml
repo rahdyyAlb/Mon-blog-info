@@ -1,0 +1,44 @@
+<?php if(isset($_SESSION["admin"])) : ?>
+    <form action="modif_article.php" method="post">
+        <h4>Modifier un article</h4>
+        
+        <fieldset> 
+        	<div class="pseudo">
+        	    <input type="hidden" name="id_article" value="<?= $id ?>"/>
+    	        <label for="story">Titre</label>
+    	        <input type="text" name="titre" value="<?= $article_modif["titre"] ?>"/>
+    		</div>
+    		<div>
+    	    	<textarea id="story" name="contenu" rows="15" cols="100"><?= $article_modif["contenu"] ?></textarea>
+    	    </div>
+    	    <div class="custom-file">
+	        <input type="hidden" name="MAX_FILE_SIZE" value="2500000" title="Permitted bytes per file." />
+            <input type="file"  name ="image" class="custom-file-input" id="validatedCustomFile" >
+            <label class="custom-file-label" for="validatedCustomFile">Ajouter un image</label>
+        </div>
+    	    <label for="id_auteur">Catégorie</label>
+        <select name ="id_cat" class="form-control" id="exampleFormControlSelect1">
+            <?php foreach($categories as $categorie) : ?>
+            <?php if($article_modif["id_cat"] == $categorie['id_cat']) : ?>
+            <option value="<?= $categorie["id_cat"]  ?> "selected><?= $categorie["nomCat"] ?>
+            <?php else: ?>
+            <option value="<?= $categorie["id_cat"] ?>"><?= $categorie["nomCat"] ?> </option>
+             <?php endif; ?>
+            <?php endforeach; ?> 
+        </select>
+         <label for="id_auteur"> Auteur</label>
+        <select name ="id_auteur" class="form-control" id="exampleFormControlSelect1">
+          <?php foreach($auteurs as $auteur) : ?>
+              <?php if($article_modif["id_auteur"] == $auteur['id_auteur']) : ?>
+                  <option value="<?= $auteur['id_auteur'] ?>" selected><?= $auteur["nom"] ?> <?= $auteur["prenom"] ?></option>
+              <?php else: ?>
+                  <option value="<?= $auteur['id_auteur'] ?>"><?= $auteur["nom"] ?> <?= $auteur["prenom"] ?></option>
+              <?php endif; ?>
+          <?php endforeach; ?> 
+        </select>
+        <input class="valider" type="submit" value="valider"/>
+    	</fieldset>	
+    </form>
+<?php else: ?>
+    <?php header('location:admin.php'); ?>
+<?php endif; ?>

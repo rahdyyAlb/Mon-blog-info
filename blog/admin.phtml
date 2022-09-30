@@ -1,0 +1,106 @@
+<?php if(!isset($_SESSION['admin'])): ?>
+    <form action="admin.php" method="post">
+        <div class="form-group">
+            <label for="exampleInputEmail1" class="blanc">Identifiant</label>
+            <input type="texte" class="form-control" id="exampleInputEmail1"  placeholder="Enter email" name="identifiant">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1" class="blanc"> Password</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" name="mdp" placeholder="Password">
+        </div>
+        <button type="submit" class="btn btn-primary"><i class="fa-solid fa-user-check"></i></button>
+    </form>
+<?php else: ?>
+    <div class="tables">
+            <div class="auteur">
+                <h2>Liste des catégorie </h2>
+                <a href="ajout_categorie.php">
+                    <button class="ajouter">
+                        <i class="fa-solid fa-plus"></i>
+                    </button>  
+                </a>                
+                <table class="table table-dark table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">N°id</th>
+                            <th scope="col">Catégorie</th>
+                            <th scope="col">Modifier</th>
+                            <th scope="col">Supprimer</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach($amdin_cats as $amdin_cat) : ?>
+                            <tr>
+                                <td><?= $amdin_cat["id_cat"] ?></td>
+                                <td><?= $amdin_cat["nomCat"] ?></td>
+                                <td><a href="modif_cat.php?id_cat=<?= $amdin_cat["id_cat"] ?>"><button><i class="fa-solid fa-pen-fancy"></i></button></a></td>
+                                <td><a href="supprimer_cat.php?id_cat=<?= $amdin_cat["id_cat"] ?>"><button><i class="fa-solid fa-xmark"></i></button></a></td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
+            <div class="auteur">
+                <h2>Liste des Auteurs </h2>
+                <a href="ajout_auteur.php">
+                    <button class="ajouter">
+                        <i class="fa-solid fa-plus"></i>
+                    </button>  
+                </a>
+                <table class="table table-dark table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">N°id</th>
+                            <th scope="col">Nom</th>
+                            <th scope="col">Prenom</th>
+                            <th scope="col">Modifier</th>
+                            <th scope="col">Supprimer</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach($amdin_auteurs as $amdin_auteur) : ?>
+                            <tr>
+                                <td><?= $amdin_auteur["id_auteur"] ?></td>
+                                <td><?= $amdin_auteur["nom"] ?></td>
+                                <td><?= $amdin_auteur["prenom"] ?></td>
+                                <td><a href="modif_auteur.php?id_auteur=<?= $amdin_auteur["id_auteur"] ?>"><button><i class="fa-solid fa-pen-fancy"></i></button></a></td>
+                                <td><a href="supprimer_auteur.php?id_auteur=<?= $amdin_auteur["id_auteur"] ?>"><button><i class="fa-solid fa-xmark"></i></button></a></td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
+    </div>    
+    <h1 class="blanc">La liste des articles </h1>
+    <a href="ajout_article.php">
+        <button class="ajouter"  >
+            <i class="fa-solid fa-file-circle-plus"></i>
+        </button>
+    </a>
+    <table class="table table-dark table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Auteur</th>
+                <th scope="col"> Titre </th>
+                <th scope="col">Article </th>
+                <th scope="col"> Catégorie </th>
+                <th scope="col">Date de création </th>
+                <th scope="col">Modifier</th>
+                <th scope="col">Supprimer</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach($amdin_articles as $amdin_article) : ?>
+            <tr class="blanc">
+                <td><?= $amdin_article["nom"] ?>  <?= $amdin_article["prenom"] ?></td>
+                <td><?= substr($amdin_article["titre"], 0, 10) ?> </td>
+                <td><?= substr($amdin_article["contenu"], 0, 80)?> </td>
+                <td><?= $amdin_article["nomCat"] ?> </td>
+                <td><?= $amdin_article["date"] ?> </td>
+                <td><a href="modif_article.php?id_article=<?= $amdin_article["id_article"] ?>"><button><i class="fa-solid fa-pen-fancy"></i></button></a></td>
+                <td><a href="supprimer_article.php?id_article=<?= $amdin_article["id_article"] ?>"><button><i class="fa-solid fa-xmark"></i></button></a></td>
+            </tr>
+            <?php endforeach; ?> 
+        </tbody>
+    </table>
+ <?php endif; ?>

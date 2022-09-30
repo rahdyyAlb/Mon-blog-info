@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Mon blog</title>
+		
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Athiti:500|Merienda:400,700&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="css/style.css">
+		<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+	</head>
+	<body>
+		<header>
+			<h1><strong>Breaking News</strong></h1>
+			<div class="container">
+				<div class="nav">
+					<a href="index.html" class="animated-link"> <span> Acceuile</span>
+					</a>
+					<?php if(!isset($_SESSION['admin'])): ?>
+					<a href="admin.php" class="animated-link">
+						<span>Connexion</span>
+					</a>
+					<?php else: ?>
+					<a href="deco.php" class="animated-link">
+						<span>Déconnexion</span>
+					</a>
+					<?php endif; ?>
+				</div>
+				<!--
+				<nav>
+					<ul>
+						<li><a href="about.php">sport</a></li>
+						<li><a href="menus.php">Actu</a></li>
+						<li><a href="contact.php">Reportage</a></li>
+						<li><a href="contact.php">Reportage</a></li>
+					</ul>
+				</nav>
+				 -->
+			</div>
+			<!-- end of .container -->
+		</header>
+		<video id="background-video" autoplay loop muted>
+
+<source src="videos/pexels-urpina-art's-9177224.mp4" type="video/mp4">
+
+</video>
+		<main class="container">
+			<?php require $template.'.phtml' ?>
+		</main>
+		<footer class="footer">
+			<div >
+				<div class="reseaux">
+					<a href="#" class="fab fa-facebook-f"></a>
+					<a href="#" class="fab fa-instagram"></a>
+					<a href="#" class="fab fa-pinterest-p"></a>
+				</div>
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni, maxime, reprehenderit veritatis explicabo libero assumenda nihil corporis fugiat ea tenetur. Dolore, aspernatur, molestias asperiores eaque sint laboriosam error accusantium fugiat non ratione obcaecati cumque natus a placeat quos nostrum 
+				</p>
+			</div>
+			<!-- end of .footer -->
+		</div>
+		<!-- end of .container -->
+	</footer>
+	 <script type="text/javascript" src="js/script.js"></script>
+</body>
+</html>

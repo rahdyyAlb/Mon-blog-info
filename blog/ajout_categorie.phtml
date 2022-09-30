@@ -1,0 +1,13 @@
+<?php if(isset($_SESSION["admin"])) : ?>
+    <form action="ajout_categorie.php" method="post">
+      <div class="row">
+        <div class="col">
+            <label for="nom" class="blanc">Nom Catégorie</label>
+            <input type="text" class="form-control" name="nomCat" placeholder="nom">
+        </div>
+        <input class="valider" type="submit" value="valider"/>
+      </div>
+    </form>
+<?php else: ?>
+<?php header('location:admin.php'); ?>
+<?php endif; ?>
